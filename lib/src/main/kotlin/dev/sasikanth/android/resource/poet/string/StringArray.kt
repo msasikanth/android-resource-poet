@@ -1,5 +1,10 @@
-package dev.sasikanth.android.resource.poet
+package dev.sasikanth.android.resource.poet.string
 
+import dev.sasikanth.android.resource.poet.ATTR_NAME
+import dev.sasikanth.android.resource.poet.ATTR_TRANSLATABLE
+import dev.sasikanth.android.resource.poet.ResourceMarker
+import dev.sasikanth.android.resource.poet.TAG_ITEM
+import dev.sasikanth.android.resource.poet.TAG_STRING_ARRAY
 import org.w3c.dom.Document
 import org.w3c.dom.Element
 

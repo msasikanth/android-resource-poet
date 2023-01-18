@@ -1,5 +1,7 @@
 package dev.sasikanth.android.resource.poet
 
+import dev.sasikanth.android.resource.poet.string.StringArray
+import dev.sasikanth.android.resource.poet.string.StringItem
 import java.io.StringWriter
 import javax.xml.parsers.DocumentBuilderFactory
 import javax.xml.parsers.ParserConfigurationException
