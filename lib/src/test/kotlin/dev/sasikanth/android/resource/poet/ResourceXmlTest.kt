@@ -131,4 +131,72 @@ class ResourceXmlTest {
         // then
         assertThat(resourceXml).isEqualTo(expectedResourceXml)
     }
+
+    @Test fun stringPluralsResourceXmlShouldBeGeneratedCorrectly() {
+        // given
+        val expectedResourceXml = """
+        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+        <resources>
+            <plurals name="numberOfSongsAvailable">
+                <item quantity="one">%d song found.</item>
+                <item quantity="other">%d songs found.</item>
+            </plurals>
+        </resources>
+
+        """.trimIndent()
+
+        // when
+        val resourceXml = resourceXml {
+            stringPlurals {
+                name = "numberOfSongsAvailable"
+                item {
+                    quantity = "one"
+                    value = "%d song found."
+                }
+
+                item {
+                    quantity = "other"
+                    value = "%d songs found."
+                }
+            }
+        }
+
+        // then
+        assertThat(resourceXml).isEqualTo(expectedResourceXml)
+    }
+
+    @Test fun untranslatableStringPluralsResourceXmlShouldBeGeneratedCorrectly() {
+        // given
+        val expectedResourceXml = """
+        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+        <resources>
+            <plurals name="numberOfSongsAvailable" translatable="false">
+                <item quantity="one">%d song found.</item>
+                <item quantity="other">%d songs found.</item>
+            </plurals>
+        </resources>
+
+        """.trimIndent()
+
+        // when
+        val resourceXml = resourceXml {
+            stringPlurals {
+                name = "numberOfSongsAvailable"
+                translatable = false
+
+                item {
+                    quantity = "one"
+                    value = "%d song found."
+                }
+
+                item {
+                    quantity = "other"
+                    value = "%d songs found."
+                }
+            }
+        }
+
+        // then
+        assertThat(resourceXml).isEqualTo(expectedResourceXml)
+    }
 }

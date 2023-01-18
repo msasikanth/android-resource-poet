@@ -3,6 +3,7 @@ package dev.sasikanth.android.resource.poet
 import dev.sasikanth.android.resource.poet.common.TAG_RESOURCES
 import dev.sasikanth.android.resource.poet.string.StringArray
 import dev.sasikanth.android.resource.poet.string.StringItem
+import dev.sasikanth.android.resource.poet.string.StringPlurals
 import java.io.StringWriter
 import javax.xml.parsers.DocumentBuilderFactory
 import javax.xml.parsers.ParserConfigurationException
@@ -41,6 +42,10 @@ class ResourceXml {
 
     fun stringArray(init: StringArray.() -> Unit) {
         StringArray(document, resourcesTag).also(init).build()
+    }
+
+    fun stringPlurals(init: StringPlurals.() -> Unit) {
+        StringPlurals(document, resourcesTag).also(init).build()
     }
 
     override fun toString(): String {
