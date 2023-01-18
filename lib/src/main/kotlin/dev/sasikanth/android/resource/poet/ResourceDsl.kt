@@ -22,13 +22,13 @@ class ResourceXml {
     } catch (e: ParserConfigurationException) {
         error("Failed to create the XML builder")
     }
-    private val document = documentBuilder.newDocument()
-    private val element = document.createElement(TAG_RESOURCES)
+    internal val document = documentBuilder.newDocument()
+    internal val resourcesTag = document.createElement(TAG_RESOURCES)
 
     private val transformerFactory by lazy { TransformerFactory.newInstance() }
 
     init {
-        document.appendChild(element)
+        document.appendChild(resourcesTag)
     }
 
     override fun toString(): String {
