@@ -9,6 +9,7 @@ fun ResourceXml.string(init: StringItem.() -> Unit) {
     stringItem.build()
 }
 
+@ResourceMarker
 class StringItem internal constructor(
     document: Document,
     root: Element

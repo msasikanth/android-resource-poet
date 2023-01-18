@@ -15,6 +15,7 @@ fun resourceXml(init: ResourceXml.() -> Unit): String {
     return resourceXml.toString()
 }
 
+@ResourceMarker
 class ResourceXml {
 
     private val documentBuilder = try {
