@@ -1,18 +1,17 @@
 package dev.sasikanth.android.resource.poet.string
 
+import dev.sasikanth.android.resource.poet.ResourceItem
 import dev.sasikanth.android.resource.poet.common.ATTR_NAME
 import dev.sasikanth.android.resource.poet.common.ATTR_TRANSLATABLE
-import dev.sasikanth.android.resource.poet.ResourceMarker
 import dev.sasikanth.android.resource.poet.common.TAG_ITEM
 import dev.sasikanth.android.resource.poet.common.TAG_STRING_ARRAY
 import org.w3c.dom.Document
 import org.w3c.dom.Element
 
-@ResourceMarker
 class StringArray internal constructor(
     private val document: Document,
     root: Element
-) {
+) : ResourceItem {
 
     lateinit var name: String
 
@@ -26,7 +25,7 @@ class StringArray internal constructor(
         root.appendChild(stringArrayTag)
     }
 
-    fun build() {
+    override fun build() {
         stringArrayTag.setAttribute(ATTR_NAME, name)
         if (!translatable) {
             stringArrayTag.setAttribute(ATTR_TRANSLATABLE, translatable.toString())

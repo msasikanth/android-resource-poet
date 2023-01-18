@@ -2,16 +2,15 @@ package dev.sasikanth.android.resource.poet.string
 
 import dev.sasikanth.android.resource.poet.common.ATTR_NAME
 import dev.sasikanth.android.resource.poet.common.ATTR_TRANSLATABLE
-import dev.sasikanth.android.resource.poet.ResourceMarker
+import dev.sasikanth.android.resource.poet.ResourceItem
 import dev.sasikanth.android.resource.poet.common.TAG_STRING
 import org.w3c.dom.Document
 import org.w3c.dom.Element
 
-@ResourceMarker
 class StringItem internal constructor(
     document: Document,
     root: Element
-) {
+) : ResourceItem {
     lateinit var name: String
 
     lateinit var value: String
@@ -24,7 +23,7 @@ class StringItem internal constructor(
         root.appendChild(stringTag)
     }
 
-    fun build() {
+    override fun build() {
         stringTag.setAttribute(ATTR_NAME, name)
         if (!translatable) {
             stringTag.setAttribute(ATTR_TRANSLATABLE, translatable.toString())
