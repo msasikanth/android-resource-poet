@@ -36,6 +36,10 @@ class ResourceXml {
         StringItem(document, resourcesTag).also(init).build()
     }
 
+    fun stringArray(init: StringArray.() -> Unit) {
+        StringArray(document, resourcesTag).also(init).build()
+    }
+
     override fun toString(): String {
         val stringWriter = StringWriter()
         val result = StreamResult(stringWriter)

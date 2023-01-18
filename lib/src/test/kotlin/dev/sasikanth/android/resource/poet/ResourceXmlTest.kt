@@ -66,4 +66,69 @@ class ResourceXmlTest {
         // then
         assertThat(resourceXml).isEqualTo(expectedResourceXml)
     }
+
+    @Test fun stringArrayResourceXmlShouldBeGeneratedCorrectly() {
+        // given
+        val expectedResourceXml = """
+        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+        <resources>
+            <string-array name="planets_array">
+                <item>Mercury</item>
+                <item>Venus</item>
+                <item>Earth</item>
+                <item>Mars</item>
+            </string-array>
+        </resources>
+
+        """.trimIndent()
+
+        // when
+        val resourceXml = resourceXml {
+            stringArray {
+                name = "planets_array"
+                items = arrayOf(
+                    "Mercury",
+                    "Venus",
+                    "Earth",
+                    "Mars"
+                )
+            }
+        }
+
+        // then
+        assertThat(resourceXml).isEqualTo(expectedResourceXml)
+    }
+
+    @Test fun untranslatableStringArrayResourceXmlShouldBeGeneratedCorrectly() {
+        // given
+        val expectedResourceXml = """
+        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+        <resources>
+            <string-array name="planets_array" translatable="false">
+                <item>Mercury</item>
+                <item>Venus</item>
+                <item>Earth</item>
+                <item>Mars</item>
+            </string-array>
+        </resources>
+
+    """.trimIndent()
+
+        // when
+        val resourceXml = resourceXml {
+            stringArray {
+                name = "planets_array"
+                items = arrayOf(
+                    "Mercury",
+                    "Venus",
+                    "Earth",
+                    "Mars"
+                )
+                translatable = false
+            }
+        }
+
+        // then
+        assertThat(resourceXml).isEqualTo(expectedResourceXml)
+    }
 }
