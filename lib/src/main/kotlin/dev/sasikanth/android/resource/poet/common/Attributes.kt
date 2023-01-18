@@ -1,4 +1,4 @@
-package dev.sasikanth.android.resource.poet
+package dev.sasikanth.android.resource.poet.common
 
 internal const val ATTR_NAME = "name"
 

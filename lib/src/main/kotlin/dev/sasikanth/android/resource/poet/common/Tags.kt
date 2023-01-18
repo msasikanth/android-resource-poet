@@ -1,4 +1,4 @@
-package dev.sasikanth.android.resource.poet
+package dev.sasikanth.android.resource.poet.common
 
 internal const val TAG_RESOURCES = "resources"
 internal const val TAG_STRING = "string"
