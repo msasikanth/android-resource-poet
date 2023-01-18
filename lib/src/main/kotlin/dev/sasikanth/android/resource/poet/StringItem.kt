@@ -3,12 +3,6 @@ package dev.sasikanth.android.resource.poet
 import org.w3c.dom.Document
 import org.w3c.dom.Element
 
-fun ResourceXml.string(init: StringItem.() -> Unit) {
-    val stringItem = StringItem(document, resourcesTag)
-    stringItem.init()
-    stringItem.build()
-}
-
 @ResourceMarker
 class StringItem internal constructor(
     document: Document,
