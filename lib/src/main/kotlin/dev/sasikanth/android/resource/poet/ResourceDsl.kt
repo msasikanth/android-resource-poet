@@ -33,9 +33,7 @@ class ResourceXml {
     }
 
     fun string(init: StringItem.() -> Unit) {
-        val stringItem = StringItem(document, resourcesTag)
-        stringItem.init()
-        stringItem.build()
+        StringItem(document, resourcesTag).also(init).build()
     }
 
     override fun toString(): String {
