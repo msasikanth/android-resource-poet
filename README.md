@@ -2,7 +2,13 @@
 
 DSL to create Android resource XML from Kotlin.
 
-For example (API is still WIP, not finalised or fully built yet):
+## Adding to your project
+
+```kotlin
+// TBD
+```
+
+## Basic usage
 
 ```kotlin
 val xml: String = resourceXml {
@@ -16,20 +22,56 @@ val xml: String = resourceXml {
         name = "ball_radius"
         value = "30dp"
     }
-
-    enumAttr {
-        name = "type"
-        enum {
-            name = "type_1"
-            value = 0
-        }
-        enum {
-            name = "type_2"
-            value = 1
-        }
-    }
 }
 
 // Write XML to file
+val fileWriter: OutputStreamWriter = // config file output stream
 fileWriter.write(xml)
 ```
+
+## Supported resource types (WIP and continuously updated)
+
+<details>
+    <summary>String</summary>
+
+```kotlin
+resourceXml {
+    string {
+        name = "" // Required
+        value = "" // Required
+        translatable = false // Optional - Default true
+    }
+}
+````
+</details>
+
+<details>
+    <summary>String Array</summary>
+
+```kotlin
+resourceXml {
+    stringArray {
+        name = "" // Required
+        items = arrayOf("") // Required
+        translatable = false // Optional - Default true
+    }
+}
+````
+</details>
+
+<details>
+    <summary>Plurals</summary>
+
+```kotlin
+resourceXml {
+    stringPlurals {
+        name = "" // Required
+        translatable = false // Optional - Default true
+        item {
+            quantity = "" // Required
+            value = "" // Required
+        }
+    }
+}
+````
+</details>
