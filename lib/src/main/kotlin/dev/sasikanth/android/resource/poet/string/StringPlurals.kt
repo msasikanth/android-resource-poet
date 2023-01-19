@@ -12,10 +12,10 @@ import org.w3c.dom.Element
 class StringPlurals internal constructor(
     private val document: Document,
     root: Element
-) : ResourceItem {
+) : TranslatableStringResourceItem {
     lateinit var name: String
 
-    var translatable: Boolean = true
+    override var translatable: Boolean = true
 
     private val stringPluralTag = document.createElement(TAG_STRING_PLURALS)
 
