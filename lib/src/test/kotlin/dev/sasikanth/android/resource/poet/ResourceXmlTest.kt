@@ -199,4 +199,26 @@ class ResourceXmlTest {
         // then
         assertThat(resourceXml).isEqualTo(expectedResourceXml)
     }
+
+    @Test fun booleanResourceXmlShouldBeGeneratedCorrectly() {
+        // given
+        val expectedResourceXml = """
+        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+        <resources>
+            <bool name="adjust_view_bounds">true</bool>
+        </resources>
+
+        """.trimIndent()
+
+        // when
+        val resourceXml = resourceXml {
+            boolean {
+                name = "adjust_view_bounds"
+                value = true
+            }
+        }
+
+        // then
+        assertThat(resourceXml).isEqualTo(expectedResourceXml)
+    }
 }

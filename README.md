@@ -75,3 +75,16 @@ resourceXml {
 }
 ````
 </details>
+
+<details>
+    <summary>Boolean</summary>
+
+```kotlin
+resourceXml {
+    boolean {
+        name = "" // Required
+        value = true // Optional - Default false
+    }
+}
+```
+</details>
