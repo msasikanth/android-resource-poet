@@ -243,4 +243,26 @@ class ResourceXmlTest {
         // then
         assertThat(resourceXml).isEqualTo(expectedResourceXml)
     }
+
+    @Test fun dimenResourceXmlShouldBeGeneratedCorrectly() {
+        // given
+        val expectedResourceXml = """
+        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+        <resources>
+            <dimen name="font_size">14sp</dimen>
+        </resources>
+
+        """.trimIndent()
+
+        // when
+        val resourceXml = resourceXml {
+            dimen {
+                name = "font_size"
+                value = "14sp"
+            }
+        }
+
+        // then
+        assertThat(resourceXml).isEqualTo(expectedResourceXml)
+    }
 }

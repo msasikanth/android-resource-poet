@@ -101,3 +101,16 @@ resourceXml {
 }
 ```
 </details>
+
+<details>
+    <summary>Dimen</summary>
+
+```kotlin
+resourceXml {
+    dimen {
+        name = "" // Required
+        value = "" // Required
+    }
+}
+```
+</details>
