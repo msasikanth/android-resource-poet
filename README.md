@@ -88,3 +88,16 @@ resourceXml {
 }
 ```
 </details>
+
+<details>
+    <summary>Color</summary>
+
+```kotlin
+resourceXml {
+    color {
+        name = "" // Required
+        value = "" // Required
+    }
+}
+```
+</details>

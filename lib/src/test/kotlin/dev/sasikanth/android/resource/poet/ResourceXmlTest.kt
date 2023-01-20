@@ -221,4 +221,26 @@ class ResourceXmlTest {
         // then
         assertThat(resourceXml).isEqualTo(expectedResourceXml)
     }
+
+    @Test fun colorResourceXmlShouldBeGeneratedCorrectly() {
+        // given
+        val expectedResourceXml = """
+            <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+            <resources>
+                <color name="app_color_primary">#FFFFFF</color>
+            </resources>
+
+        """.trimIndent()
+
+        // when
+        val resourceXml = resourceXml {
+            color {
+                name = "app_color_primary"
+                value = "#FFFFFF"
+            }
+        }
+
+        // then
+        assertThat(resourceXml).isEqualTo(expectedResourceXml)
+    }
 }

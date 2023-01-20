@@ -1,6 +1,7 @@
 package dev.sasikanth.android.resource.poet
 
 import dev.sasikanth.android.resource.poet.boolean.BooleanItem
+import dev.sasikanth.android.resource.poet.color.ColorItem
 import dev.sasikanth.android.resource.poet.common.TAG_RESOURCES
 import dev.sasikanth.android.resource.poet.string.StringArray
 import dev.sasikanth.android.resource.poet.string.StringItem
@@ -51,6 +52,10 @@ class ResourceXml {
 
     fun boolean(init: BooleanItem.() -> Unit) {
         BooleanItem(document, resourcesTag).also(init).build()
+    }
+
+    fun color(init: ColorItem.() -> Unit) {
+        ColorItem(document, resourcesTag).also(init).build()
     }
 
     override fun toString(): String {
