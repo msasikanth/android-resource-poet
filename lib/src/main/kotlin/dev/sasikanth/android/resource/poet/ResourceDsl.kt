@@ -4,6 +4,7 @@ import dev.sasikanth.android.resource.poet.boolean.BooleanItem
 import dev.sasikanth.android.resource.poet.color.ColorItem
 import dev.sasikanth.android.resource.poet.common.TAG_RESOURCES
 import dev.sasikanth.android.resource.poet.dimen.DimenItem
+import dev.sasikanth.android.resource.poet.id.IdItem
 import dev.sasikanth.android.resource.poet.string.StringArray
 import dev.sasikanth.android.resource.poet.string.StringItem
 import dev.sasikanth.android.resource.poet.string.StringPlurals
@@ -61,6 +62,10 @@ class ResourceXml {
 
     fun dimen(init: DimenItem.() -> Unit) {
         DimenItem(document, resourcesTag).also(init).build()
+    }
+
+    fun id(init: IdItem.() -> Unit) {
+        IdItem(document, resourcesTag).also(init).build()
     }
 
     override fun toString(): String {
