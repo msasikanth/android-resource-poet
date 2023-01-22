@@ -18,15 +18,13 @@ class StringItem internal constructor(
 
     private val stringTag = document.createElement(TAG_STRING)
 
-    init {
-        root.appendChild(stringTag)
-    }
-
-    override fun build() {
+    override fun build(): Element {
         stringTag.setAttribute(ATTR_NAME, name)
         if (!translatable) {
             stringTag.setAttribute(ATTR_TRANSLATABLE, translatable.toString())
         }
         stringTag.textContent = value
+
+        return stringTag
     }
 }

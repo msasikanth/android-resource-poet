@@ -41,31 +41,52 @@ class ResourceXml {
     }
 
     fun string(init: StringItem.() -> Unit) {
-        StringItem(document, resourcesTag).also(init).build()
+        StringItem(document, resourcesTag)
+            .also(init)
+            .build()
+            .also(resourcesTag::appendChild)
     }
 
     fun stringArray(init: StringArray.() -> Unit) {
-        StringArray(document, resourcesTag).also(init).build()
+        StringArray(document, resourcesTag)
+            .also(init)
+            .build()
+            .also(resourcesTag::appendChild)
     }
 
     fun stringPlurals(init: StringPlurals.() -> Unit) {
-        StringPlurals(document, resourcesTag).also(init).build()
+        StringPlurals(document, resourcesTag)
+            .also(init)
+            .build()
+            .also(resourcesTag::appendChild)
     }
 
     fun boolean(init: BooleanItem.() -> Unit) {
-        BooleanItem(document, resourcesTag).also(init).build()
+        BooleanItem(document, resourcesTag)
+            .also(init)
+            .build()
+            .also(resourcesTag::appendChild)
     }
 
     fun color(init: ColorItem.() -> Unit) {
-        ColorItem(document, resourcesTag).also(init).build()
+        ColorItem(document, resourcesTag)
+            .also(init)
+            .build()
+            .also(resourcesTag::appendChild)
     }
 
     fun dimen(init: DimenItem.() -> Unit) {
-        DimenItem(document, resourcesTag).also(init).build()
+        DimenItem(document, resourcesTag)
+            .also(init)
+            .build()
+            .also(resourcesTag::appendChild)
     }
 
     fun id(init: IdItem.() -> Unit) {
-        IdItem(document, resourcesTag).also(init).build()
+        IdItem(document, resourcesTag)
+            .also(init)
+            .build()
+            .also(resourcesTag::appendChild)
     }
 
     override fun toString(): String {

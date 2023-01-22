@@ -16,12 +16,9 @@ class DimenItem internal constructor(
 
     private val dimenTag = document.createElement(TAG_DIMEN)
 
-    init {
-        rootTag.appendChild(dimenTag)
-    }
-
-    override fun build() {
+    override fun build(): Element {
         dimenTag.setAttribute(ATTR_NAME, name)
         dimenTag.textContent = value
+        return dimenTag
     }
 }

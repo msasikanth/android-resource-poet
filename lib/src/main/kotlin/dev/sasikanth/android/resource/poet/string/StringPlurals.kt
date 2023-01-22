@@ -19,19 +19,20 @@ class StringPlurals internal constructor(
 
     private val stringPluralTag = document.createElement(TAG_STRING_PLURALS)
 
-    init {
-        root.appendChild(stringPluralTag)
-    }
-
     fun item(init: StringPluralItem.() -> Unit) {
-        StringPluralItem(document, stringPluralTag).also(init).build()
+        StringPluralItem(document, stringPluralTag)
+            .also(init)
+            .build()
+            .also(stringPluralTag::appendChild)
     }
 
-    override fun build() {
+    override fun build(): Element {
         stringPluralTag.setAttribute(ATTR_NAME, name)
         if (!translatable) {
             stringPluralTag.setAttribute(ATTR_TRANSLATABLE, translatable.toString())
         }
+
+        return stringPluralTag
     }
 }
 
@@ -45,12 +46,10 @@ class StringPluralItem internal constructor(
 
     private val itemTag = document.createElement(TAG_ITEM)
 
-    init {
-        root.appendChild(itemTag)
-    }
-
-    override fun build() {
+    override fun build(): Element {
         itemTag.setAttribute(ATTR_QUANTITY, quantity)
         itemTag.textContent = value
+
+        return itemTag
     }
 }

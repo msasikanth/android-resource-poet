@@ -16,12 +16,9 @@ class BooleanItem internal constructor(
 
     private val booleanTag = document.createElement(TAG_BOOLEAN)
 
-    init {
-        root.appendChild(booleanTag)
-    }
-
-    override fun build() {
+    override fun build(): Element {
         booleanTag.setAttribute(ATTR_NAME, name)
         booleanTag.textContent = value.toString()
+        return booleanTag
     }
 }

@@ -20,11 +20,7 @@ class StringArray internal constructor(
 
     private val stringArrayTag = document.createElement(TAG_STRING_ARRAY)
 
-    init {
-        root.appendChild(stringArrayTag)
-    }
-
-    override fun build() {
+    override fun build(): Element {
         stringArrayTag.setAttribute(ATTR_NAME, name)
         if (!translatable) {
             stringArrayTag.setAttribute(ATTR_TRANSLATABLE, translatable.toString())
@@ -35,5 +31,7 @@ class StringArray internal constructor(
             itemElement.textContent = item
             stringArrayTag.appendChild(itemElement)
         }
+
+        return stringArrayTag
     }
 }

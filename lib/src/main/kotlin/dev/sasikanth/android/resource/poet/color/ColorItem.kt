@@ -12,13 +12,10 @@ class ColorItem internal constructor(document: Document, rootTag: Element) : Res
     lateinit var value: String
     
     private val colorTag = document.createElement(TAG_COLOR)
-    
-    init {
-        rootTag.appendChild(colorTag)
-    }
 
-    override fun build() {
+    override fun build(): Element {
         colorTag.setAttribute(ATTR_NAME, name)
         colorTag.textContent = value
+        return colorTag
     }
 }
