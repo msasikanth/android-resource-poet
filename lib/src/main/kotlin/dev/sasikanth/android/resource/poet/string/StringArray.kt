@@ -7,10 +7,7 @@ import dev.sasikanth.android.resource.poet.common.TAG_STRING_ARRAY
 import org.w3c.dom.Document
 import org.w3c.dom.Element
 
-class StringArray internal constructor(
-    private val document: Document,
-    root: Element
-) : TranslatableStringResourceItem {
+class StringArray internal constructor(private val document: Document) : TranslatableStringResourceItem {
 
     lateinit var name: String
 

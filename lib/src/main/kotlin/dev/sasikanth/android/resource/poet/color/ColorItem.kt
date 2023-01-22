@@ -6,7 +6,7 @@ import dev.sasikanth.android.resource.poet.common.TAG_COLOR
 import org.w3c.dom.Document
 import org.w3c.dom.Element
 
-class ColorItem internal constructor(document: Document, rootTag: Element) : ResourceItem {
+class ColorItem internal constructor(document: Document) : ResourceItem {
     
     lateinit var name: String
     lateinit var value: String

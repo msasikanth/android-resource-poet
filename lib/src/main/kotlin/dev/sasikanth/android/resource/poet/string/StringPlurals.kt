@@ -9,10 +9,7 @@ import dev.sasikanth.android.resource.poet.common.TAG_STRING_PLURALS
 import org.w3c.dom.Document
 import org.w3c.dom.Element
 
-class StringPlurals internal constructor(
-    private val document: Document,
-    root: Element
-) : TranslatableStringResourceItem {
+class StringPlurals internal constructor(private val document: Document) : TranslatableStringResourceItem {
     lateinit var name: String
 
     override var translatable: Boolean = true
@@ -20,7 +17,7 @@ class StringPlurals internal constructor(
     private val stringPluralTag = document.createElement(TAG_STRING_PLURALS)
 
     fun item(init: StringPluralItem.() -> Unit) {
-        StringPluralItem(document, stringPluralTag)
+        StringPluralItem(document)
             .also(init)
             .build()
             .also(stringPluralTag::appendChild)
@@ -36,10 +33,7 @@ class StringPlurals internal constructor(
     }
 }
 
-class StringPluralItem internal constructor(
-    document: Document,
-    root: Element
-) : ResourceItem {
+class StringPluralItem internal constructor(document: Document) : ResourceItem {
     lateinit var quantity: String
 
     lateinit var value: String

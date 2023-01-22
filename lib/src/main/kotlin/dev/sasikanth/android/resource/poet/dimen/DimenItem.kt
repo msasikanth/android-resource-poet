@@ -6,10 +6,7 @@ import dev.sasikanth.android.resource.poet.common.TAG_DIMEN
 import org.w3c.dom.Document
 import org.w3c.dom.Element
 
-class DimenItem internal constructor(
-    document: Document,
-    rootTag: Element
-) : ResourceItem {
+class DimenItem internal constructor(document: Document) : ResourceItem {
 
     lateinit var name: String
     lateinit var value: String

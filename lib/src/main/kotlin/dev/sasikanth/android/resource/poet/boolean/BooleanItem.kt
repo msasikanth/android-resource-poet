@@ -6,10 +6,7 @@ import dev.sasikanth.android.resource.poet.common.TAG_BOOLEAN
 import org.w3c.dom.Document
 import org.w3c.dom.Element
 
-class BooleanItem internal constructor(
-    document: Document,
-    root: Element
-) : ResourceItem {
+class BooleanItem internal constructor(document: Document) : ResourceItem {
 
     lateinit var name: String
     var value: Boolean = false

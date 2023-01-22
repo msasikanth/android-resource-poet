@@ -41,49 +41,49 @@ class ResourceXml {
     }
 
     fun string(init: StringItem.() -> Unit) {
-        StringItem(document, resourcesTag)
+        StringItem(document)
             .also(init)
             .build()
             .also(resourcesTag::appendChild)
     }
 
     fun stringArray(init: StringArray.() -> Unit) {
-        StringArray(document, resourcesTag)
+        StringArray(document)
             .also(init)
             .build()
             .also(resourcesTag::appendChild)
     }
 
     fun stringPlurals(init: StringPlurals.() -> Unit) {
-        StringPlurals(document, resourcesTag)
+        StringPlurals(document)
             .also(init)
             .build()
             .also(resourcesTag::appendChild)
     }
 
     fun boolean(init: BooleanItem.() -> Unit) {
-        BooleanItem(document, resourcesTag)
+        BooleanItem(document)
             .also(init)
             .build()
             .also(resourcesTag::appendChild)
     }
 
     fun color(init: ColorItem.() -> Unit) {
-        ColorItem(document, resourcesTag)
+        ColorItem(document)
             .also(init)
             .build()
             .also(resourcesTag::appendChild)
     }
 
     fun dimen(init: DimenItem.() -> Unit) {
-        DimenItem(document, resourcesTag)
+        DimenItem(document)
             .also(init)
             .build()
             .also(resourcesTag::appendChild)
     }
 
     fun id(init: IdItem.() -> Unit) {
-        IdItem(document, resourcesTag)
+        IdItem(document)
             .also(init)
             .build()
             .also(resourcesTag::appendChild)
