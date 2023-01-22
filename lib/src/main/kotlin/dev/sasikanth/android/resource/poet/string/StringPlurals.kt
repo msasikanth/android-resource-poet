@@ -6,20 +6,17 @@ import dev.sasikanth.android.resource.poet.common.ATTR_QUANTITY
 import dev.sasikanth.android.resource.poet.common.ATTR_TRANSLATABLE
 import dev.sasikanth.android.resource.poet.common.TAG_ITEM
 import dev.sasikanth.android.resource.poet.common.TAG_STRING_PLURALS
-import org.w3c.dom.Document
 import org.w3c.dom.Element
 
-class StringPlurals internal constructor(private val document: Document) : TranslatableStringResourceItem {
+class StringPlurals internal constructor() : TranslatableStringResourceItem {
     lateinit var name: String
 
     override var translatable: Boolean = true
 
-    private val stringPluralTag = document.createElement(TAG_STRING_PLURALS)
-
     private val items = mutableListOf<StringPluralItem>()
 
     fun item(init: StringPluralItem.() -> Unit) {
-        val pluralItem = StringPluralItem(document).also(init)
+        val pluralItem = StringPluralItem().also(init)
         items.add(pluralItem)
     }
 
@@ -38,12 +35,10 @@ class StringPlurals internal constructor(private val document: Document) : Trans
     }
 }
 
-class StringPluralItem internal constructor(document: Document) : ResourceItem {
+class StringPluralItem internal constructor() : ResourceItem {
     lateinit var quantity: String
 
     lateinit var value: String
-
-    private val itemTag = document.createElement(TAG_ITEM)
 
     override fun build(tagFactory: (tagName: String) -> Element): Element {
         val itemTag = tagFactory(TAG_ITEM)
