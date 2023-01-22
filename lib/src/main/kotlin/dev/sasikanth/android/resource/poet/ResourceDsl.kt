@@ -5,6 +5,7 @@ import dev.sasikanth.android.resource.poet.color.ColorItem
 import dev.sasikanth.android.resource.poet.common.TAG_RESOURCES
 import dev.sasikanth.android.resource.poet.dimen.DimenItem
 import dev.sasikanth.android.resource.poet.id.IdItem
+import dev.sasikanth.android.resource.poet.integer.IntegerItem
 import dev.sasikanth.android.resource.poet.string.StringArray
 import dev.sasikanth.android.resource.poet.string.StringItem
 import dev.sasikanth.android.resource.poet.string.StringPlurals
@@ -84,6 +85,13 @@ class ResourceXml {
 
     fun id(init: IdItem.() -> Unit) {
         IdItem()
+            .also(init)
+            .build(tagFactory = document::createElement)
+            .also(resourcesTag::appendChild)
+    }
+
+    fun integer(init: IntegerItem.() -> Unit) {
+        IntegerItem()
             .also(init)
             .build(tagFactory = document::createElement)
             .also(resourcesTag::appendChild)

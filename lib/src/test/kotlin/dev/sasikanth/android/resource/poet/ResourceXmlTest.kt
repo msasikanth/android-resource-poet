@@ -286,4 +286,26 @@ class ResourceXmlTest {
         // then
         assertThat(resourceXml).isEqualTo(expectedResourceXml)
     }
+
+    @Test fun integerResourceXmlShouldBeGeneratedCorrectly() {
+        // given
+        val expectedResourceXml = """
+        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+        <resources>
+            <integer name="max_speed">75</integer>
+        </resources>
+
+        """.trimIndent()
+
+        // when
+        val resourceXml = resourceXml {
+            integer {
+                name = "max_speed"
+                value = 75
+            }
+        }
+
+        // then
+        assertThat(resourceXml).isEqualTo(expectedResourceXml)
+    }
 }

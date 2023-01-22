@@ -114,3 +114,16 @@ resourceXml {
 }
 ```
 </details>
+
+<details>
+    <summary>Integer</summary>
+
+```kotlin
+resourceXml {
+    integer {
+        name = "" // Required
+        value = "" // Required
+    }
+}
+```
+</details>
