@@ -14,7 +14,8 @@ class IdItem internal constructor(document: Document) : ResourceItem {
 
     private val idItemTag = document.createElement(TAG_ITEM)
 
-    override fun build(): Element {
+    override fun build(tagFactory: (tagName: String) -> Element): Element {
+        val idItemTag = tagFactory(TAG_ITEM)
         idItemTag.setAttribute(ATTR_TYPE, ATTR_TYPE_ID)
         idItemTag.setAttribute(ATTR_NAME, name)
         return idItemTag

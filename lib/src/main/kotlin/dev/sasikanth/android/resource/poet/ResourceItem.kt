@@ -4,5 +4,5 @@ import org.w3c.dom.Element
 
 @ResourceMarker
 interface ResourceItem {
-  fun build(): Element
+  fun build(tagFactory: (tagName: String) -> Element): Element
 }

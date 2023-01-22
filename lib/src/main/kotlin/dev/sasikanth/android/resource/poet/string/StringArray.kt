@@ -17,14 +17,15 @@ class StringArray internal constructor(private val document: Document) : Transla
 
     private val stringArrayTag = document.createElement(TAG_STRING_ARRAY)
 
-    override fun build(): Element {
+    override fun build(tagFactory: (tagName: String) -> Element): Element {
+        val stringArrayTag = tagFactory(TAG_STRING_ARRAY)
         stringArrayTag.setAttribute(ATTR_NAME, name)
         if (!translatable) {
             stringArrayTag.setAttribute(ATTR_TRANSLATABLE, translatable.toString())
         }
 
         for (item in items) {
-            val itemElement = document.createElement(TAG_ITEM)
+            val itemElement = tagFactory(TAG_ITEM)
             itemElement.textContent = item
             stringArrayTag.appendChild(itemElement)
         }

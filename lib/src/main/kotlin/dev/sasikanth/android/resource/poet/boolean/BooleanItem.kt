@@ -13,7 +13,8 @@ class BooleanItem internal constructor(document: Document) : ResourceItem {
 
     private val booleanTag = document.createElement(TAG_BOOLEAN)
 
-    override fun build(): Element {
+    override fun build(tagFactory: (tagName: String) -> Element): Element {
+        val booleanTag = tagFactory(TAG_BOOLEAN)
         booleanTag.setAttribute(ATTR_NAME, name)
         booleanTag.textContent = value.toString()
         return booleanTag

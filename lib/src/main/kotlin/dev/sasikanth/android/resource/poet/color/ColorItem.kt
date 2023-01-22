@@ -13,7 +13,8 @@ class ColorItem internal constructor(document: Document) : ResourceItem {
     
     private val colorTag = document.createElement(TAG_COLOR)
 
-    override fun build(): Element {
+    override fun build(tagFactory: (tagName: String) -> Element): Element {
+        val colorTag = tagFactory(TAG_COLOR)
         colorTag.setAttribute(ATTR_NAME, name)
         colorTag.textContent = value
         return colorTag

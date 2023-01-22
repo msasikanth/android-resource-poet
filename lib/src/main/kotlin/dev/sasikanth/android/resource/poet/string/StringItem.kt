@@ -15,7 +15,8 @@ class StringItem internal constructor(document: Document) : TranslatableStringRe
 
     private val stringTag = document.createElement(TAG_STRING)
 
-    override fun build(): Element {
+    override fun build(tagFactory: (tagName: String) -> Element): Element {
+        val stringTag = tagFactory(TAG_STRING)
         stringTag.setAttribute(ATTR_NAME, name)
         if (!translatable) {
             stringTag.setAttribute(ATTR_TRANSLATABLE, translatable.toString())

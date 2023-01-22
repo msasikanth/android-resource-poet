@@ -16,17 +16,22 @@ class StringPlurals internal constructor(private val document: Document) : Trans
 
     private val stringPluralTag = document.createElement(TAG_STRING_PLURALS)
 
+    private val items = mutableListOf<StringPluralItem>()
+
     fun item(init: StringPluralItem.() -> Unit) {
-        StringPluralItem(document)
-            .also(init)
-            .build()
-            .also(stringPluralTag::appendChild)
+        val pluralItem = StringPluralItem(document).also(init)
+        items.add(pluralItem)
     }
 
-    override fun build(): Element {
+    override fun build(tagFactory: (tagName: String) -> Element): Element {
+        val stringPluralTag = tagFactory(TAG_STRING_PLURALS)
         stringPluralTag.setAttribute(ATTR_NAME, name)
         if (!translatable) {
             stringPluralTag.setAttribute(ATTR_TRANSLATABLE, translatable.toString())
+        }
+
+        for (item in items) {
+            item.build(tagFactory).also(stringPluralTag::appendChild)
         }
 
         return stringPluralTag
@@ -40,7 +45,8 @@ class StringPluralItem internal constructor(document: Document) : ResourceItem {
 
     private val itemTag = document.createElement(TAG_ITEM)
 
-    override fun build(): Element {
+    override fun build(tagFactory: (tagName: String) -> Element): Element {
+        val itemTag = tagFactory(TAG_ITEM)
         itemTag.setAttribute(ATTR_QUANTITY, quantity)
         itemTag.textContent = value
 

@@ -43,49 +43,49 @@ class ResourceXml {
     fun string(init: StringItem.() -> Unit) {
         StringItem(document)
             .also(init)
-            .build()
+            .build(tagFactory = document::createElement)
             .also(resourcesTag::appendChild)
     }
 
     fun stringArray(init: StringArray.() -> Unit) {
         StringArray(document)
             .also(init)
-            .build()
+            .build(tagFactory = document::createElement)
             .also(resourcesTag::appendChild)
     }
 
     fun stringPlurals(init: StringPlurals.() -> Unit) {
         StringPlurals(document)
             .also(init)
-            .build()
+            .build(tagFactory = document::createElement)
             .also(resourcesTag::appendChild)
     }
 
     fun boolean(init: BooleanItem.() -> Unit) {
         BooleanItem(document)
             .also(init)
-            .build()
+            .build(tagFactory = document::createElement)
             .also(resourcesTag::appendChild)
     }
 
     fun color(init: ColorItem.() -> Unit) {
         ColorItem(document)
             .also(init)
-            .build()
+            .build(tagFactory = document::createElement)
             .also(resourcesTag::appendChild)
     }
 
     fun dimen(init: DimenItem.() -> Unit) {
         DimenItem(document)
             .also(init)
-            .build()
+            .build(tagFactory = document::createElement)
             .also(resourcesTag::appendChild)
     }
 
     fun id(init: IdItem.() -> Unit) {
         IdItem(document)
             .also(init)
-            .build()
+            .build(tagFactory = document::createElement)
             .also(resourcesTag::appendChild)
     }
 

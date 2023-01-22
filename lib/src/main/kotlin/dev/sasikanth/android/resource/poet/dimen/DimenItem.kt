@@ -13,7 +13,8 @@ class DimenItem internal constructor(document: Document) : ResourceItem {
 
     private val dimenTag = document.createElement(TAG_DIMEN)
 
-    override fun build(): Element {
+    override fun build(tagFactory: (tagName: String) -> Element): Element {
+        val dimenTag = tagFactory(TAG_DIMEN)
         dimenTag.setAttribute(ATTR_NAME, name)
         dimenTag.textContent = value
         return dimenTag
