@@ -308,4 +308,30 @@ class ResourceXmlTest {
         // then
         assertThat(resourceXml).isEqualTo(expectedResourceXml)
     }
+
+    @Test fun integerArrayResosurceXmlShouldBeGeneratedCorrectly() {
+        // given
+        val expectedResourceXml = """
+        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+        <resources>
+            <integer-array name="bits">
+                <item>4</item>
+                <item>8</item>
+                <item>16</item>
+            </integer-array>
+        </resources>
+
+        """.trimIndent()
+
+        // when
+        val resourceXml = resourceXml {
+            integerArray {
+                name = "bits"
+                values = intArrayOf(4, 8, 16)
+            }
+        }
+
+        // then
+        assertThat(resourceXml).isEqualTo(expectedResourceXml)
+    }
 }

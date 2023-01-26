@@ -127,3 +127,16 @@ resourceXml {
 }
 ```
 </details>
+
+<details>
+    <summary>Integer Array</summary>
+
+```kotlin
+resourceXml {
+    integerArray {
+        name = "" // Required
+        values = intArrayOf() // Required
+    }
+}
+```
+</details>
