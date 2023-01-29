@@ -140,3 +140,21 @@ resourceXml {
 }
 ```
 </details>
+
+<details>
+    <summary>Style</summary>
+
+```kotlin
+resourceXml {
+    style {
+        name = "" // Required
+        parent = "" // Optional - Default empty
+
+        item {
+            name = "" // Required
+            value = "" // Required
+        }
+    }
+}
+```
+</details>

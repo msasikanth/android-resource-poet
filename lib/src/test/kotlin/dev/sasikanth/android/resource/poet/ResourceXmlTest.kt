@@ -334,4 +334,45 @@ class ResourceXmlTest {
         // then
         assertThat(resourceXml).isEqualTo(expectedResourceXml)
     }
+
+    @Test fun styleResourceXmlShouldBeGeneratedCorrectly() {
+        // given
+        val expectedResourceXml = """
+        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+        <resources>
+            <style name="Theme.App.Light" parent="Theme.MaterialComponents.Light">
+                <item name="colorPrimary">@color/light_blue_500</item>
+                <item name="colorPrimaryDark">@color/light_blue_800</item>
+                <item name="colorSecondary">@color/pink_500</item>
+            </style>
+        </resources>
+
+        """.trimIndent()
+
+        // when
+        val resourceXml = resourceXml {
+            style {
+                name = "Theme.App.Light"
+                parent = "Theme.MaterialComponents.Light"
+
+                item {
+                    name = "colorPrimary"
+                    value = "@color/light_blue_500"
+                }
+
+                item {
+                    name = "colorPrimaryDark"
+                    value = "@color/light_blue_800"
+                }
+
+                item {
+                    name = "colorSecondary"
+                    value = "@color/pink_500"
+                }
+            }
+        }
+
+        // then
+        assertThat(resourceXml).isEqualTo(expectedResourceXml)
+    }
 }

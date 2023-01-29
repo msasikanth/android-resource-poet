@@ -10,6 +10,7 @@ import dev.sasikanth.android.resource.poet.integer.IntegerItem
 import dev.sasikanth.android.resource.poet.string.StringArray
 import dev.sasikanth.android.resource.poet.string.StringItem
 import dev.sasikanth.android.resource.poet.string.StringPlurals
+import dev.sasikanth.android.resource.poet.style.Style
 import java.io.StringWriter
 import javax.xml.parsers.DocumentBuilderFactory
 import javax.xml.parsers.ParserConfigurationException
@@ -100,6 +101,13 @@ class ResourceXml {
 
     fun integerArray(init: IntegerArrayItem.() -> Unit) {
         IntegerArrayItem()
+            .also(init)
+            .build(tagFactory = document::createElement)
+            .also(resourcesTag::appendChild)
+    }
+
+    fun style(init: Style.() -> Unit) {
+        Style()
             .also(init)
             .build(tagFactory = document::createElement)
             .also(resourcesTag::appendChild)
