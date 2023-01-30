@@ -5,9 +5,8 @@ import dev.sasikanth.android.resource.poet.common.ATTR_NAME
 import dev.sasikanth.android.resource.poet.common.TAG_COLOR
 import org.w3c.dom.Element
 
-class ColorItem internal constructor() : ResourceItem {
+class ColorItem internal constructor(private val name: String) : ResourceItem {
 
-  lateinit var name: String
   lateinit var value: String
 
   override fun build(tagFactory: (tagName: String) -> Element): Element {

@@ -7,9 +7,8 @@ import dev.sasikanth.android.resource.poet.common.TAG_ITEM
 import dev.sasikanth.android.resource.poet.common.TAG_STYLE
 import org.w3c.dom.Element
 
-class Style : ResourceItem {
+class Style internal constructor(private val name: String) : ResourceItem {
 
-  lateinit var name: String
   var parent: String = ""
 
   private val items = mutableListOf<StyleItem>()

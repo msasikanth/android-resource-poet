@@ -5,9 +5,8 @@ import dev.sasikanth.android.resource.poet.common.ATTR_NAME
 import dev.sasikanth.android.resource.poet.common.TAG_DIMEN
 import org.w3c.dom.Element
 
-class DimenItem internal constructor() : ResourceItem {
+class DimenItem internal constructor(private val name: String) : ResourceItem {
 
-  lateinit var name: String
   lateinit var value: String
 
   override fun build(tagFactory: (tagName: String) -> Element): Element {

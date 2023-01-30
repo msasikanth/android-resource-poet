@@ -15,14 +15,12 @@ implementation("dev.sasikanth:android-resource-poet:<latest-version>")
 
 ```kotlin
 val xml: String = resourceXml {
-    string {
-        name = "app_name"
+    string(name = "app_name") {
         value = "Twine"
         translatable = false
     }
 
-    dimen {
-        name = "ball_radius"
+    dimen(name = "ball_radius") {
         value = "30dp"
     }
 }
@@ -39,8 +37,7 @@ fileWriter.write(xml)
 
 ```kotlin
 resourceXml {
-    string {
-        name = "" // Required
+    string(name = "") {
         value = "" // Required
         translatable = false // Optional - Default true
     }
@@ -53,8 +50,7 @@ resourceXml {
 
 ```kotlin
 resourceXml {
-    stringArray {
-        name = "" // Required
+    stringArray(name = "") {
         items = arrayOf("") // Required
         translatable = false // Optional - Default true
     }
@@ -67,8 +63,7 @@ resourceXml {
 
 ```kotlin
 resourceXml {
-    stringPlurals {
-        name = "" // Required
+    stringPlurals(name = "") {
         translatable = false // Optional - Default true
         item {
             quantity = "" // Required
@@ -84,8 +79,7 @@ resourceXml {
 
 ```kotlin
 resourceXml {
-    boolean {
-        name = "" // Required
+    boolean(name = "") {
         value = true // Optional - Default false
     }
 }
@@ -97,12 +91,12 @@ resourceXml {
 
 ```kotlin
 resourceXml {
-    color {
-        name = "" // Required
+    color(name = "") {
         value = "" // Required
     }
 }
 ```
+
 </details>
 
 <details>
@@ -110,12 +104,12 @@ resourceXml {
 
 ```kotlin
 resourceXml {
-    dimen {
-        name = "" // Required
+    dimen(name = "") {
         value = "" // Required
     }
 }
 ```
+
 </details>
 
 <details>
@@ -123,12 +117,12 @@ resourceXml {
 
 ```kotlin
 resourceXml {
-    integer {
-        name = "" // Required
+    integer(name = "") {
         value = "" // Required
     }
 }
 ```
+
 </details>
 
 <details>
@@ -136,12 +130,12 @@ resourceXml {
 
 ```kotlin
 resourceXml {
-    integerArray {
-        name = "" // Required
+    integerArray(name = "") {
         values = intArrayOf() // Required
     }
 }
 ```
+
 </details>
 
 <details>
@@ -149,8 +143,7 @@ resourceXml {
 
 ```kotlin
 resourceXml {
-    style {
-        name = "" // Required
+    style(name = "") {
         parent = "" // Optional - Default empty
 
         item {
@@ -160,6 +153,7 @@ resourceXml {
     }
 }
 ```
+
 </details>
 
 ## License

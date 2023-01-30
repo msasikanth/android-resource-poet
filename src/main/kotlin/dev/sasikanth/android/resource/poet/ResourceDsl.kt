@@ -44,68 +44,71 @@ class ResourceXml {
     document.appendChild(resourcesTag)
   }
 
-  fun string(init: StringItem.() -> Unit) {
-    StringItem()
+  fun string(name: String, init: StringItem.() -> Unit) {
+    StringItem(name)
       .also(init)
       .build(tagFactory = document::createElement)
       .also(resourcesTag::appendChild)
   }
 
-  fun stringArray(init: StringArray.() -> Unit) {
-    StringArray()
+  fun stringArray(name: String, init: StringArray.() -> Unit) {
+    StringArray(name)
       .also(init)
       .build(tagFactory = document::createElement)
       .also(resourcesTag::appendChild)
   }
 
-  fun stringPlurals(init: StringPlurals.() -> Unit) {
-    StringPlurals()
+  fun stringPlurals(name: String, init: StringPlurals.() -> Unit) {
+    StringPlurals(name)
       .also(init)
       .build(tagFactory = document::createElement)
       .also(resourcesTag::appendChild)
   }
 
-  fun boolean(init: BooleanItem.() -> Unit) {
-    BooleanItem()
+  fun boolean(name: String, init: BooleanItem.() -> Unit) {
+    BooleanItem(name)
       .also(init)
       .build(tagFactory = document::createElement)
       .also(resourcesTag::appendChild)
   }
 
-  fun color(init: ColorItem.() -> Unit) {
-    ColorItem()
+  fun color(name: String, init: ColorItem.() -> Unit) {
+    ColorItem(name)
       .also(init)
       .build(tagFactory = document::createElement)
       .also(resourcesTag::appendChild)
   }
 
-  fun dimen(init: DimenItem.() -> Unit) {
-    DimenItem()
+  fun dimen(name: String, init: DimenItem.() -> Unit) {
+    DimenItem(name)
       .also(init)
       .build(tagFactory = document::createElement)
       .also(resourcesTag::appendChild)
   }
 
-  fun id(init: IdItem.() -> Unit) {
-    IdItem().also(init).build(tagFactory = document::createElement).also(resourcesTag::appendChild)
+  fun id(name: String) {
+    IdItem(name).build(tagFactory = document::createElement).also(resourcesTag::appendChild)
   }
 
-  fun integer(init: IntegerItem.() -> Unit) {
-    IntegerItem()
+  fun integer(name: String, init: IntegerItem.() -> Unit) {
+    IntegerItem(name)
       .also(init)
       .build(tagFactory = document::createElement)
       .also(resourcesTag::appendChild)
   }
 
-  fun integerArray(init: IntegerArrayItem.() -> Unit) {
-    IntegerArrayItem()
+  fun integerArray(name: String, init: IntegerArrayItem.() -> Unit) {
+    IntegerArrayItem(name)
       .also(init)
       .build(tagFactory = document::createElement)
       .also(resourcesTag::appendChild)
   }
 
-  fun style(init: Style.() -> Unit) {
-    Style().also(init).build(tagFactory = document::createElement).also(resourcesTag::appendChild)
+  fun style(name: String, init: Style.() -> Unit) {
+    Style(name)
+      .also(init)
+      .build(tagFactory = document::createElement)
+      .also(resourcesTag::appendChild)
   }
 
   override fun toString(): String {

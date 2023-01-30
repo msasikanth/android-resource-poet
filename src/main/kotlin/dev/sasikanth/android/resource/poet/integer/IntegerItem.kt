@@ -5,9 +5,7 @@ import dev.sasikanth.android.resource.poet.common.ATTR_NAME
 import dev.sasikanth.android.resource.poet.common.TAG_INTEGER
 import org.w3c.dom.Element
 
-class IntegerItem : ResourceItem {
-
-  lateinit var name: String
+class IntegerItem internal constructor(private val name: String) : ResourceItem {
 
   var value: Int? = null
 

@@ -40,12 +40,7 @@ class ResourceXmlTest {
         .trimIndent()
 
     // when
-    val resourceXml = resourceXml {
-      string {
-        name = "hello"
-        value = "Hello!"
-      }
-    }
+    val resourceXml = resourceXml { string(name = "hello") { value = "Hello!" } }
 
     // then
     assertThat(resourceXml).isEqualTo(expectedResourceXml)
@@ -66,8 +61,7 @@ class ResourceXmlTest {
 
     // when
     val resourceXml = resourceXml {
-      string {
-        name = "app_name"
+      string(name = "app_name") {
         value = "Twine"
         translatable = false
       }
@@ -97,10 +91,7 @@ class ResourceXmlTest {
 
     // when
     val resourceXml = resourceXml {
-      stringArray {
-        name = "planets_array"
-        items = arrayOf("Mercury", "Venus", "Earth", "Mars")
-      }
+      stringArray(name = "planets_array") { items = arrayOf("Mercury", "Venus", "Earth", "Mars") }
     }
 
     // then
@@ -127,8 +118,7 @@ class ResourceXmlTest {
 
     // when
     val resourceXml = resourceXml {
-      stringArray {
-        name = "planets_array"
+      stringArray(name = "planets_array") {
         items = arrayOf("Mercury", "Venus", "Earth", "Mars")
         translatable = false
       }
@@ -156,8 +146,7 @@ class ResourceXmlTest {
 
     // when
     val resourceXml = resourceXml {
-      stringPlurals {
-        name = "numberOfSongsAvailable"
+      stringPlurals(name = "numberOfSongsAvailable") {
         item {
           quantity = "one"
           value = "%d song found."
@@ -192,8 +181,7 @@ class ResourceXmlTest {
 
     // when
     val resourceXml = resourceXml {
-      stringPlurals {
-        name = "numberOfSongsAvailable"
+      stringPlurals(name = "numberOfSongsAvailable") {
         translatable = false
 
         item {
@@ -226,12 +214,7 @@ class ResourceXmlTest {
         .trimIndent()
 
     // when
-    val resourceXml = resourceXml {
-      boolean {
-        name = "adjust_view_bounds"
-        value = true
-      }
-    }
+    val resourceXml = resourceXml { boolean(name = "adjust_view_bounds") { value = true } }
 
     // then
     assertThat(resourceXml).isEqualTo(expectedResourceXml)
@@ -251,12 +234,7 @@ class ResourceXmlTest {
         .trimIndent()
 
     // when
-    val resourceXml = resourceXml {
-      color {
-        name = "app_color_primary"
-        value = "#FFFFFF"
-      }
-    }
+    val resourceXml = resourceXml { color(name = "app_color_primary") { value = "#FFFFFF" } }
 
     // then
     assertThat(resourceXml).isEqualTo(expectedResourceXml)
@@ -276,12 +254,7 @@ class ResourceXmlTest {
         .trimIndent()
 
     // when
-    val resourceXml = resourceXml {
-      dimen {
-        name = "font_size"
-        value = "14sp"
-      }
-    }
+    val resourceXml = resourceXml { dimen(name = "font_size") { value = "14sp" } }
 
     // then
     assertThat(resourceXml).isEqualTo(expectedResourceXml)
@@ -301,7 +274,7 @@ class ResourceXmlTest {
         .trimIndent()
 
     // when
-    val resourceXml = resourceXml { id { name = "button_ok" } }
+    val resourceXml = resourceXml { id(name = "button_ok") }
 
     // then
     assertThat(resourceXml).isEqualTo(expectedResourceXml)
@@ -321,12 +294,7 @@ class ResourceXmlTest {
         .trimIndent()
 
     // when
-    val resourceXml = resourceXml {
-      integer {
-        name = "max_speed"
-        value = 75
-      }
-    }
+    val resourceXml = resourceXml { integer(name = "max_speed") { value = 75 } }
 
     // then
     assertThat(resourceXml).isEqualTo(expectedResourceXml)
@@ -350,12 +318,7 @@ class ResourceXmlTest {
         .trimIndent()
 
     // when
-    val resourceXml = resourceXml {
-      integerArray {
-        name = "bits"
-        values = intArrayOf(4, 8, 16)
-      }
-    }
+    val resourceXml = resourceXml { integerArray(name = "bits") { values = intArrayOf(4, 8, 16) } }
 
     // then
     assertThat(resourceXml).isEqualTo(expectedResourceXml)
@@ -380,8 +343,7 @@ class ResourceXmlTest {
 
     // when
     val resourceXml = resourceXml {
-      style {
-        name = "Theme.App.Light"
+      style(name = "Theme.App.Light") {
         parent = "Theme.MaterialComponents.Light"
 
         item {

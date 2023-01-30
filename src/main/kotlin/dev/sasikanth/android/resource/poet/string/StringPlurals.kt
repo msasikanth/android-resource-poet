@@ -8,8 +8,8 @@ import dev.sasikanth.android.resource.poet.common.TAG_ITEM
 import dev.sasikanth.android.resource.poet.common.TAG_STRING_PLURALS
 import org.w3c.dom.Element
 
-class StringPlurals internal constructor() : TranslatableStringResourceItem {
-  lateinit var name: String
+class StringPlurals internal constructor(private val name: String) :
+  TranslatableStringResourceItem {
 
   override var translatable: Boolean = true
 

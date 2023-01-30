@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changes
+
+- Use function param for configuring resource name in DSL
+
 ## [1.0.0] - 2023-01-30
 
 ### Added

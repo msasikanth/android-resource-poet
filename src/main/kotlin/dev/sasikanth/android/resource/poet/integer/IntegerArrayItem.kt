@@ -6,9 +6,7 @@ import dev.sasikanth.android.resource.poet.common.TAG_INTEGER_ARRAY
 import dev.sasikanth.android.resource.poet.common.TAG_ITEM
 import org.w3c.dom.Element
 
-class IntegerArrayItem : ResourceItem {
-
-  lateinit var name: String
+class IntegerArrayItem internal constructor(private val name: String) : ResourceItem {
 
   lateinit var values: IntArray
 

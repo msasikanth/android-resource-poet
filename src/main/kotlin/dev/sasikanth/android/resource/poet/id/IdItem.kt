@@ -7,9 +7,7 @@ import dev.sasikanth.android.resource.poet.common.ATTR_TYPE_ID
 import dev.sasikanth.android.resource.poet.common.TAG_ITEM
 import org.w3c.dom.Element
 
-class IdItem internal constructor() : ResourceItem {
-
-  lateinit var name: String
+class IdItem internal constructor(private val name: String) : ResourceItem {
 
   override fun build(tagFactory: (tagName: String) -> Element): Element {
     val idItemTag = tagFactory(TAG_ITEM)

@@ -5,8 +5,7 @@ import dev.sasikanth.android.resource.poet.common.ATTR_TRANSLATABLE
 import dev.sasikanth.android.resource.poet.common.TAG_STRING
 import org.w3c.dom.Element
 
-class StringItem internal constructor() : TranslatableStringResourceItem {
-  lateinit var name: String
+class StringItem internal constructor(private val name: String) : TranslatableStringResourceItem {
 
   lateinit var value: String
 
