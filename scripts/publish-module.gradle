@@ -1,6 +1,42 @@
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
 
+// Create variables with empty default values
+ext["signing.keyId"] = ''
+ext["signing.password"] = ''
+ext["signing.key"] = ''
+ext["ossrhUsername"] = ''
+ext["ossrhPassword"] = ''
+ext["sonatypeStagingProfileId"] = ''
+
+File secretPropsFile = project.rootProject.file('local.properties')
+if (secretPropsFile.exists()) {
+  // Read local.properties file first if it exists
+  Properties p = new Properties()
+  new FileInputStream(secretPropsFile).withCloseable { is -> p.load(is) }
+  p.each { name, value -> ext[name] = value }
+} else {
+  // Use system environment variables
+  ext["ossrhUsername"] = System.getenv('OSSRH_USERNAME')
+  ext["ossrhPassword"] = System.getenv('OSSRH_PASSWORD')
+  ext["sonatypeStagingProfileId"] = System.getenv('SONATYPE_STAGING_PROFILE_ID')
+  ext["signing.keyId"] = System.getenv('SIGNING_KEY_ID')
+  ext["signing.password"] = System.getenv('SIGNING_PASSWORD')
+  ext["signing.key"] = System.getenv('SIGNING_KEY')
+}
+
+nexusPublishing {
+  repositories {
+    sonatype {
+      stagingProfileId = sonatypeStagingProfileId
+      username = ossrhUsername
+      password = ossrhPassword
+      nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+      snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+    }
+  }
+}
+
 tasks.register('androidSourcesJar', Jar) {
     archiveClassifier.set('sources')
     if (project.plugins.findPlugin("com.android.library")) {
@@ -14,8 +50,15 @@ tasks.register('androidSourcesJar', Jar) {
     }
 }
 
+tasks.register('javadocJar', Jar) {
+    dependsOn dokkaJavadoc
+    archiveClassifier.set('javadoc')
+    from dokkaJavadoc.outputDirectory
+}
+
 artifacts {
   archives androidSourcesJar
+  archives javadocJar
 }
 
 group = PUBLISH_GROUP_ID
@@ -36,6 +79,7 @@ afterEvaluate {
          }
 
         artifact androidSourcesJar
+        artifact javadocJar
 
         pom {
           name = PUBLISH_ARTIFACT_ID
