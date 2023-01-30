@@ -1,4 +1,4 @@
-# Android Resource Poet [WIP]
+# Android Resource Poet
 
 DSL to create Android resource XML from Kotlin.
 
@@ -25,11 +25,11 @@ val xml: String = resourceXml {
 }
 
 // Write XML to file
-val fileWriter: OutputStreamWriter = // config file output stream
+val fileWriter: OutputStreamWriter = // configure file output stream
 fileWriter.write(xml)
 ```
 
-## Supported resource types (WIP and continuously updated)
+## Supported resource types (WIP)
 
 <details>
     <summary>String</summary>
