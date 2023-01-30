@@ -1,11 +1,13 @@
 # Android Resource Poet
 
-DSL to create Android resource XML from Kotlin.
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.sasikanth/android-resource-poet/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.sasikanth/android-resource-poet)
+
+Kotlin DSL to create Android resource XML
 
 ## Adding to your project
 
 ```kotlin
-// TBD
+implementation("dev.sasikanth:android-resource-poet:<latest-version>")
 ```
 
 ## Basic usage
