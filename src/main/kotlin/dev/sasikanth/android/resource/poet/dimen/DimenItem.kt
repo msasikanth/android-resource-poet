@@ -7,13 +7,13 @@ import org.w3c.dom.Element
 
 class DimenItem internal constructor() : ResourceItem {
 
-    lateinit var name: String
-    lateinit var value: String
+  lateinit var name: String
+  lateinit var value: String
 
-    override fun build(tagFactory: (tagName: String) -> Element): Element {
-        val dimenTag = tagFactory(TAG_DIMEN)
-        dimenTag.setAttribute(ATTR_NAME, name)
-        dimenTag.textContent = value
-        return dimenTag
-    }
+  override fun build(tagFactory: (tagName: String) -> Element): Element {
+    val dimenTag = tagFactory(TAG_DIMEN)
+    dimenTag.setAttribute(ATTR_NAME, name)
+    dimenTag.textContent = value
+    return dimenTag
+  }
 }

@@ -7,18 +7,18 @@ import org.w3c.dom.Element
 
 class IntegerItem : ResourceItem {
 
-    lateinit var name: String
+  lateinit var name: String
 
-    var value: Int? = null
+  var value: Int? = null
 
-    override fun build(tagFactory: (tagName: String) -> Element): Element {
-        val integerTag = tagFactory(TAG_INTEGER)
-        integerTag.setAttribute(ATTR_NAME, name)
+  override fun build(tagFactory: (tagName: String) -> Element): Element {
+    val integerTag = tagFactory(TAG_INTEGER)
+    integerTag.setAttribute(ATTR_NAME, name)
 
-        if (value == null) {
-            error("Integer value cannot be null")
-        }
-        integerTag.textContent = value.toString()
-        return integerTag
+    if (value == null) {
+      error("Integer value cannot be null")
     }
+    integerTag.textContent = value.toString()
+    return integerTag
+  }
 }

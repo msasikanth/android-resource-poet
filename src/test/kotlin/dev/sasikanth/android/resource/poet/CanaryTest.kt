@@ -5,7 +5,8 @@ import kotlin.test.assertTrue
 
 class CanaryTest {
 
-    @Test fun canaryTest() {
-        assertTrue(true)
-    }
+  @Test
+  fun canaryTest() {
+    assertTrue(true)
+  }
 }

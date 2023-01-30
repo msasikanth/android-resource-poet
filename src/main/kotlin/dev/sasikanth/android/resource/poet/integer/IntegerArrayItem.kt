@@ -8,19 +8,19 @@ import org.w3c.dom.Element
 
 class IntegerArrayItem : ResourceItem {
 
-    lateinit var name: String
+  lateinit var name: String
 
-    lateinit var values: IntArray
+  lateinit var values: IntArray
 
-    override fun build(tagFactory: (tagName: String) -> Element): Element {
-        val integerArrayTag = tagFactory(TAG_INTEGER_ARRAY)
-        integerArrayTag.setAttribute(ATTR_NAME, name)
+  override fun build(tagFactory: (tagName: String) -> Element): Element {
+    val integerArrayTag = tagFactory(TAG_INTEGER_ARRAY)
+    integerArrayTag.setAttribute(ATTR_NAME, name)
 
-        for (value in values) {
-            val item = tagFactory(TAG_ITEM)
-            item.textContent = value.toString()
-            integerArrayTag.appendChild(item)
-        }
-        return integerArrayTag
+    for (value in values) {
+      val item = tagFactory(TAG_ITEM)
+      item.textContent = value.toString()
+      integerArrayTag.appendChild(item)
     }
+    return integerArrayTag
+  }
 }

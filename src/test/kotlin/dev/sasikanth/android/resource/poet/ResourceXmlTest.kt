@@ -5,71 +5,83 @@ import kotlin.test.Test
 
 class ResourceXmlTest {
 
-    @Test fun emptyResourcesXmlShouldBeGeneratedCorrectly() {
-        // given
-        val expectedResourceXml = """
+  @Test
+  fun emptyResourcesXmlShouldBeGeneratedCorrectly() {
+    // given
+    val expectedResourceXml =
+      """
         <?xml version="1.0" encoding="UTF-8" standalone="no"?>
         <resources/>
 
-        """.trimIndent()
+        """
+        .trimIndent()
 
-        // when
-        val resourceXml = resourceXml {
-            // no-op
-        }
+    // when
+    val resourceXml =
+      resourceXml {
+        // no-op
+      }
 
-        // then
-        assertThat(resourceXml).isEqualTo(expectedResourceXml)
-    }
+    // then
+    assertThat(resourceXml).isEqualTo(expectedResourceXml)
+  }
 
-    @Test fun stringResourceXmlShouldBeGeneratedCorrectly() {
-        // given
-        val expectedResourceXml = """
+  @Test
+  fun stringResourceXmlShouldBeGeneratedCorrectly() {
+    // given
+    val expectedResourceXml =
+      """
         <?xml version="1.0" encoding="UTF-8" standalone="no"?>
         <resources>
             <string name="hello">Hello!</string>
         </resources>
 
-        """.trimIndent()
+        """
+        .trimIndent()
 
-        // when
-        val resourceXml = resourceXml {
-            string {
-                name = "hello"
-                value = "Hello!"
-            }
-        }
-
-        // then
-        assertThat(resourceXml).isEqualTo(expectedResourceXml)
+    // when
+    val resourceXml = resourceXml {
+      string {
+        name = "hello"
+        value = "Hello!"
+      }
     }
 
-    @Test fun untranslatableStringResourceXmlShouldBeGeneratedCorrectly() {
-        // given
-        val expectedResourceXml = """
+    // then
+    assertThat(resourceXml).isEqualTo(expectedResourceXml)
+  }
+
+  @Test
+  fun untranslatableStringResourceXmlShouldBeGeneratedCorrectly() {
+    // given
+    val expectedResourceXml =
+      """
         <?xml version="1.0" encoding="UTF-8" standalone="no"?>
         <resources>
             <string name="app_name" translatable="false">Twine</string>
         </resources>
 
-        """.trimIndent()
+        """
+        .trimIndent()
 
-        // when
-        val resourceXml = resourceXml {
-            string {
-                name = "app_name"
-                value = "Twine"
-                translatable = false
-            }
-        }
-
-        // then
-        assertThat(resourceXml).isEqualTo(expectedResourceXml)
+    // when
+    val resourceXml = resourceXml {
+      string {
+        name = "app_name"
+        value = "Twine"
+        translatable = false
+      }
     }
 
-    @Test fun stringArrayResourceXmlShouldBeGeneratedCorrectly() {
-        // given
-        val expectedResourceXml = """
+    // then
+    assertThat(resourceXml).isEqualTo(expectedResourceXml)
+  }
+
+  @Test
+  fun stringArrayResourceXmlShouldBeGeneratedCorrectly() {
+    // given
+    val expectedResourceXml =
+      """
         <?xml version="1.0" encoding="UTF-8" standalone="no"?>
         <resources>
             <string-array name="planets_array">
@@ -80,28 +92,26 @@ class ResourceXmlTest {
             </string-array>
         </resources>
 
-        """.trimIndent()
+        """
+        .trimIndent()
 
-        // when
-        val resourceXml = resourceXml {
-            stringArray {
-                name = "planets_array"
-                items = arrayOf(
-                    "Mercury",
-                    "Venus",
-                    "Earth",
-                    "Mars"
-                )
-            }
-        }
-
-        // then
-        assertThat(resourceXml).isEqualTo(expectedResourceXml)
+    // when
+    val resourceXml = resourceXml {
+      stringArray {
+        name = "planets_array"
+        items = arrayOf("Mercury", "Venus", "Earth", "Mars")
+      }
     }
 
-    @Test fun untranslatableStringArrayResourceXmlShouldBeGeneratedCorrectly() {
-        // given
-        val expectedResourceXml = """
+    // then
+    assertThat(resourceXml).isEqualTo(expectedResourceXml)
+  }
+
+  @Test
+  fun untranslatableStringArrayResourceXmlShouldBeGeneratedCorrectly() {
+    // given
+    val expectedResourceXml =
+      """
         <?xml version="1.0" encoding="UTF-8" standalone="no"?>
         <resources>
             <string-array name="planets_array" translatable="false">
@@ -112,29 +122,27 @@ class ResourceXmlTest {
             </string-array>
         </resources>
 
-    """.trimIndent()
+    """
+        .trimIndent()
 
-        // when
-        val resourceXml = resourceXml {
-            stringArray {
-                name = "planets_array"
-                items = arrayOf(
-                    "Mercury",
-                    "Venus",
-                    "Earth",
-                    "Mars"
-                )
-                translatable = false
-            }
-        }
-
-        // then
-        assertThat(resourceXml).isEqualTo(expectedResourceXml)
+    // when
+    val resourceXml = resourceXml {
+      stringArray {
+        name = "planets_array"
+        items = arrayOf("Mercury", "Venus", "Earth", "Mars")
+        translatable = false
+      }
     }
 
-    @Test fun stringPluralsResourceXmlShouldBeGeneratedCorrectly() {
-        // given
-        val expectedResourceXml = """
+    // then
+    assertThat(resourceXml).isEqualTo(expectedResourceXml)
+  }
+
+  @Test
+  fun stringPluralsResourceXmlShouldBeGeneratedCorrectly() {
+    // given
+    val expectedResourceXml =
+      """
         <?xml version="1.0" encoding="UTF-8" standalone="no"?>
         <resources>
             <plurals name="numberOfSongsAvailable">
@@ -143,31 +151,34 @@ class ResourceXmlTest {
             </plurals>
         </resources>
 
-        """.trimIndent()
+        """
+        .trimIndent()
 
-        // when
-        val resourceXml = resourceXml {
-            stringPlurals {
-                name = "numberOfSongsAvailable"
-                item {
-                    quantity = "one"
-                    value = "%d song found."
-                }
-
-                item {
-                    quantity = "other"
-                    value = "%d songs found."
-                }
-            }
+    // when
+    val resourceXml = resourceXml {
+      stringPlurals {
+        name = "numberOfSongsAvailable"
+        item {
+          quantity = "one"
+          value = "%d song found."
         }
 
-        // then
-        assertThat(resourceXml).isEqualTo(expectedResourceXml)
+        item {
+          quantity = "other"
+          value = "%d songs found."
+        }
+      }
     }
 
-    @Test fun untranslatableStringPluralsResourceXmlShouldBeGeneratedCorrectly() {
-        // given
-        val expectedResourceXml = """
+    // then
+    assertThat(resourceXml).isEqualTo(expectedResourceXml)
+  }
+
+  @Test
+  fun untranslatableStringPluralsResourceXmlShouldBeGeneratedCorrectly() {
+    // given
+    val expectedResourceXml =
+      """
         <?xml version="1.0" encoding="UTF-8" standalone="no"?>
         <resources>
             <plurals name="numberOfSongsAvailable" translatable="false">
@@ -176,142 +187,156 @@ class ResourceXmlTest {
             </plurals>
         </resources>
 
-        """.trimIndent()
+        """
+        .trimIndent()
 
-        // when
-        val resourceXml = resourceXml {
-            stringPlurals {
-                name = "numberOfSongsAvailable"
-                translatable = false
+    // when
+    val resourceXml = resourceXml {
+      stringPlurals {
+        name = "numberOfSongsAvailable"
+        translatable = false
 
-                item {
-                    quantity = "one"
-                    value = "%d song found."
-                }
-
-                item {
-                    quantity = "other"
-                    value = "%d songs found."
-                }
-            }
+        item {
+          quantity = "one"
+          value = "%d song found."
         }
 
-        // then
-        assertThat(resourceXml).isEqualTo(expectedResourceXml)
+        item {
+          quantity = "other"
+          value = "%d songs found."
+        }
+      }
     }
 
-    @Test fun booleanResourceXmlShouldBeGeneratedCorrectly() {
-        // given
-        val expectedResourceXml = """
+    // then
+    assertThat(resourceXml).isEqualTo(expectedResourceXml)
+  }
+
+  @Test
+  fun booleanResourceXmlShouldBeGeneratedCorrectly() {
+    // given
+    val expectedResourceXml =
+      """
         <?xml version="1.0" encoding="UTF-8" standalone="no"?>
         <resources>
             <bool name="adjust_view_bounds">true</bool>
         </resources>
 
-        """.trimIndent()
+        """
+        .trimIndent()
 
-        // when
-        val resourceXml = resourceXml {
-            boolean {
-                name = "adjust_view_bounds"
-                value = true
-            }
-        }
-
-        // then
-        assertThat(resourceXml).isEqualTo(expectedResourceXml)
+    // when
+    val resourceXml = resourceXml {
+      boolean {
+        name = "adjust_view_bounds"
+        value = true
+      }
     }
 
-    @Test fun colorResourceXmlShouldBeGeneratedCorrectly() {
-        // given
-        val expectedResourceXml = """
+    // then
+    assertThat(resourceXml).isEqualTo(expectedResourceXml)
+  }
+
+  @Test
+  fun colorResourceXmlShouldBeGeneratedCorrectly() {
+    // given
+    val expectedResourceXml =
+      """
             <?xml version="1.0" encoding="UTF-8" standalone="no"?>
             <resources>
                 <color name="app_color_primary">#FFFFFF</color>
             </resources>
 
-        """.trimIndent()
+        """
+        .trimIndent()
 
-        // when
-        val resourceXml = resourceXml {
-            color {
-                name = "app_color_primary"
-                value = "#FFFFFF"
-            }
-        }
-
-        // then
-        assertThat(resourceXml).isEqualTo(expectedResourceXml)
+    // when
+    val resourceXml = resourceXml {
+      color {
+        name = "app_color_primary"
+        value = "#FFFFFF"
+      }
     }
 
-    @Test fun dimenResourceXmlShouldBeGeneratedCorrectly() {
-        // given
-        val expectedResourceXml = """
+    // then
+    assertThat(resourceXml).isEqualTo(expectedResourceXml)
+  }
+
+  @Test
+  fun dimenResourceXmlShouldBeGeneratedCorrectly() {
+    // given
+    val expectedResourceXml =
+      """
         <?xml version="1.0" encoding="UTF-8" standalone="no"?>
         <resources>
             <dimen name="font_size">14sp</dimen>
         </resources>
 
-        """.trimIndent()
+        """
+        .trimIndent()
 
-        // when
-        val resourceXml = resourceXml {
-            dimen {
-                name = "font_size"
-                value = "14sp"
-            }
-        }
-
-        // then
-        assertThat(resourceXml).isEqualTo(expectedResourceXml)
+    // when
+    val resourceXml = resourceXml {
+      dimen {
+        name = "font_size"
+        value = "14sp"
+      }
     }
 
-    @Test fun idResourceXmlShouldBeGeneratedCorrectly() {
-        // given
-        val expectedResourceXml = """
+    // then
+    assertThat(resourceXml).isEqualTo(expectedResourceXml)
+  }
+
+  @Test
+  fun idResourceXmlShouldBeGeneratedCorrectly() {
+    // given
+    val expectedResourceXml =
+      """
         <?xml version="1.0" encoding="UTF-8" standalone="no"?>
         <resources>
             <item name="button_ok" type="id"/>
         </resources>
 
-        """.trimIndent()
+        """
+        .trimIndent()
 
-        // when
-        val resourceXml = resourceXml {
-            id {
-                name = "button_ok"
-            }
-        }
+    // when
+    val resourceXml = resourceXml { id { name = "button_ok" } }
 
-        // then
-        assertThat(resourceXml).isEqualTo(expectedResourceXml)
-    }
+    // then
+    assertThat(resourceXml).isEqualTo(expectedResourceXml)
+  }
 
-    @Test fun integerResourceXmlShouldBeGeneratedCorrectly() {
-        // given
-        val expectedResourceXml = """
+  @Test
+  fun integerResourceXmlShouldBeGeneratedCorrectly() {
+    // given
+    val expectedResourceXml =
+      """
         <?xml version="1.0" encoding="UTF-8" standalone="no"?>
         <resources>
             <integer name="max_speed">75</integer>
         </resources>
 
-        """.trimIndent()
+        """
+        .trimIndent()
 
-        // when
-        val resourceXml = resourceXml {
-            integer {
-                name = "max_speed"
-                value = 75
-            }
-        }
-
-        // then
-        assertThat(resourceXml).isEqualTo(expectedResourceXml)
+    // when
+    val resourceXml = resourceXml {
+      integer {
+        name = "max_speed"
+        value = 75
+      }
     }
 
-    @Test fun integerArrayResosurceXmlShouldBeGeneratedCorrectly() {
-        // given
-        val expectedResourceXml = """
+    // then
+    assertThat(resourceXml).isEqualTo(expectedResourceXml)
+  }
+
+  @Test
+  fun integerArrayResosurceXmlShouldBeGeneratedCorrectly() {
+    // given
+    val expectedResourceXml =
+      """
         <?xml version="1.0" encoding="UTF-8" standalone="no"?>
         <resources>
             <integer-array name="bits">
@@ -321,23 +346,26 @@ class ResourceXmlTest {
             </integer-array>
         </resources>
 
-        """.trimIndent()
+        """
+        .trimIndent()
 
-        // when
-        val resourceXml = resourceXml {
-            integerArray {
-                name = "bits"
-                values = intArrayOf(4, 8, 16)
-            }
-        }
-
-        // then
-        assertThat(resourceXml).isEqualTo(expectedResourceXml)
+    // when
+    val resourceXml = resourceXml {
+      integerArray {
+        name = "bits"
+        values = intArrayOf(4, 8, 16)
+      }
     }
 
-    @Test fun styleResourceXmlShouldBeGeneratedCorrectly() {
-        // given
-        val expectedResourceXml = """
+    // then
+    assertThat(resourceXml).isEqualTo(expectedResourceXml)
+  }
+
+  @Test
+  fun styleResourceXmlShouldBeGeneratedCorrectly() {
+    // given
+    val expectedResourceXml =
+      """
         <?xml version="1.0" encoding="UTF-8" standalone="no"?>
         <resources>
             <style name="Theme.App.Light" parent="Theme.MaterialComponents.Light">
@@ -347,32 +375,33 @@ class ResourceXmlTest {
             </style>
         </resources>
 
-        """.trimIndent()
+        """
+        .trimIndent()
 
-        // when
-        val resourceXml = resourceXml {
-            style {
-                name = "Theme.App.Light"
-                parent = "Theme.MaterialComponents.Light"
+    // when
+    val resourceXml = resourceXml {
+      style {
+        name = "Theme.App.Light"
+        parent = "Theme.MaterialComponents.Light"
 
-                item {
-                    name = "colorPrimary"
-                    value = "@color/light_blue_500"
-                }
-
-                item {
-                    name = "colorPrimaryDark"
-                    value = "@color/light_blue_800"
-                }
-
-                item {
-                    name = "colorSecondary"
-                    value = "@color/pink_500"
-                }
-            }
+        item {
+          name = "colorPrimary"
+          value = "@color/light_blue_500"
         }
 
-        // then
-        assertThat(resourceXml).isEqualTo(expectedResourceXml)
+        item {
+          name = "colorPrimaryDark"
+          value = "@color/light_blue_800"
+        }
+
+        item {
+          name = "colorSecondary"
+          value = "@color/pink_500"
+        }
+      }
     }
+
+    // then
+    assertThat(resourceXml).isEqualTo(expectedResourceXml)
+  }
 }

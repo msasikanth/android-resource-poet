@@ -9,12 +9,12 @@ import org.w3c.dom.Element
 
 class IdItem internal constructor() : ResourceItem {
 
-    lateinit var name: String
+  lateinit var name: String
 
-    override fun build(tagFactory: (tagName: String) -> Element): Element {
-        val idItemTag = tagFactory(TAG_ITEM)
-        idItemTag.setAttribute(ATTR_TYPE, ATTR_TYPE_ID)
-        idItemTag.setAttribute(ATTR_NAME, name)
-        return idItemTag
-    }
+  override fun build(tagFactory: (tagName: String) -> Element): Element {
+    val idItemTag = tagFactory(TAG_ITEM)
+    idItemTag.setAttribute(ATTR_TYPE, ATTR_TYPE_ID)
+    idItemTag.setAttribute(ATTR_NAME, name)
+    return idItemTag
+  }
 }

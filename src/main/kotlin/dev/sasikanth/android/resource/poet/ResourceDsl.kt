@@ -20,106 +20,101 @@ import javax.xml.transform.dom.DOMSource
 import javax.xml.transform.stream.StreamResult
 
 fun resourceXml(init: ResourceXml.() -> Unit): String {
-    val resourceXml = ResourceXml()
-    resourceXml.init()
+  val resourceXml = ResourceXml()
+  resourceXml.init()
 
-    return resourceXml.toString()
+  return resourceXml.toString()
 }
 
 @ResourceMarker
 class ResourceXml {
 
-    private val documentBuilder = try {
-        DocumentBuilderFactory.newInstance().newDocumentBuilder()
+  private val documentBuilder =
+    try {
+      DocumentBuilderFactory.newInstance().newDocumentBuilder()
     } catch (e: ParserConfigurationException) {
-        error("Failed to create the XML builder")
+      error("Failed to create the XML builder")
     }
-    private val document = documentBuilder.newDocument()
-    private val resourcesTag = document.createElement(TAG_RESOURCES)
+  private val document = documentBuilder.newDocument()
+  private val resourcesTag = document.createElement(TAG_RESOURCES)
 
-    private val transformerFactory by lazy { TransformerFactory.newInstance() }
+  private val transformerFactory by lazy { TransformerFactory.newInstance() }
 
-    init {
-        document.appendChild(resourcesTag)
-    }
+  init {
+    document.appendChild(resourcesTag)
+  }
 
-    fun string(init: StringItem.() -> Unit) {
-        StringItem()
-            .also(init)
-            .build(tagFactory = document::createElement)
-            .also(resourcesTag::appendChild)
-    }
+  fun string(init: StringItem.() -> Unit) {
+    StringItem()
+      .also(init)
+      .build(tagFactory = document::createElement)
+      .also(resourcesTag::appendChild)
+  }
 
-    fun stringArray(init: StringArray.() -> Unit) {
-        StringArray()
-            .also(init)
-            .build(tagFactory = document::createElement)
-            .also(resourcesTag::appendChild)
-    }
+  fun stringArray(init: StringArray.() -> Unit) {
+    StringArray()
+      .also(init)
+      .build(tagFactory = document::createElement)
+      .also(resourcesTag::appendChild)
+  }
 
-    fun stringPlurals(init: StringPlurals.() -> Unit) {
-        StringPlurals()
-            .also(init)
-            .build(tagFactory = document::createElement)
-            .also(resourcesTag::appendChild)
-    }
+  fun stringPlurals(init: StringPlurals.() -> Unit) {
+    StringPlurals()
+      .also(init)
+      .build(tagFactory = document::createElement)
+      .also(resourcesTag::appendChild)
+  }
 
-    fun boolean(init: BooleanItem.() -> Unit) {
-        BooleanItem()
-            .also(init)
-            .build(tagFactory = document::createElement)
-            .also(resourcesTag::appendChild)
-    }
+  fun boolean(init: BooleanItem.() -> Unit) {
+    BooleanItem()
+      .also(init)
+      .build(tagFactory = document::createElement)
+      .also(resourcesTag::appendChild)
+  }
 
-    fun color(init: ColorItem.() -> Unit) {
-        ColorItem()
-            .also(init)
-            .build(tagFactory = document::createElement)
-            .also(resourcesTag::appendChild)
-    }
+  fun color(init: ColorItem.() -> Unit) {
+    ColorItem()
+      .also(init)
+      .build(tagFactory = document::createElement)
+      .also(resourcesTag::appendChild)
+  }
 
-    fun dimen(init: DimenItem.() -> Unit) {
-        DimenItem()
-            .also(init)
-            .build(tagFactory = document::createElement)
-            .also(resourcesTag::appendChild)
-    }
+  fun dimen(init: DimenItem.() -> Unit) {
+    DimenItem()
+      .also(init)
+      .build(tagFactory = document::createElement)
+      .also(resourcesTag::appendChild)
+  }
 
-    fun id(init: IdItem.() -> Unit) {
-        IdItem()
-            .also(init)
-            .build(tagFactory = document::createElement)
-            .also(resourcesTag::appendChild)
-    }
+  fun id(init: IdItem.() -> Unit) {
+    IdItem().also(init).build(tagFactory = document::createElement).also(resourcesTag::appendChild)
+  }
 
-    fun integer(init: IntegerItem.() -> Unit) {
-        IntegerItem()
-            .also(init)
-            .build(tagFactory = document::createElement)
-            .also(resourcesTag::appendChild)
-    }
+  fun integer(init: IntegerItem.() -> Unit) {
+    IntegerItem()
+      .also(init)
+      .build(tagFactory = document::createElement)
+      .also(resourcesTag::appendChild)
+  }
 
-    fun integerArray(init: IntegerArrayItem.() -> Unit) {
-        IntegerArrayItem()
-            .also(init)
-            .build(tagFactory = document::createElement)
-            .also(resourcesTag::appendChild)
-    }
+  fun integerArray(init: IntegerArrayItem.() -> Unit) {
+    IntegerArrayItem()
+      .also(init)
+      .build(tagFactory = document::createElement)
+      .also(resourcesTag::appendChild)
+  }
 
-    fun style(init: Style.() -> Unit) {
-        Style()
-            .also(init)
-            .build(tagFactory = document::createElement)
-            .also(resourcesTag::appendChild)
-    }
+  fun style(init: Style.() -> Unit) {
+    Style().also(init).build(tagFactory = document::createElement).also(resourcesTag::appendChild)
+  }
 
-    override fun toString(): String {
-        val stringWriter = StringWriter()
-        val result = StreamResult(stringWriter)
-        val transformer = transformerFactory.newTransformer()
-        val source = DOMSource(document)
-        transformer.setOutputProperty(OutputKeys.INDENT, "yes")
-        transformer.transform(source, result)
-        return stringWriter.toString()
-    }
+  override fun toString(): String {
+    val stringWriter = StringWriter()
+    val result = StreamResult(stringWriter)
+    val transformer = transformerFactory.newTransformer()
+    val source = DOMSource(document)
+    transformer.setOutputProperty(OutputKeys.INDENT, "yes")
+    transformer.transform(source, result)
+    return stringWriter.toString()
+  }
 }
