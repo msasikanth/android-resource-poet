@@ -3,6 +3,12 @@ plugins {
     `java-library`
 }
 
+ext {
+    set("PUBLISH_GROUP_ID", "dev.sasikanth")
+    set("PUBLISH_ARTIFACT_ID", "android-resource-poet")
+    set("PUBLISH_VERSION", "1.0.0")
+}
+
 repositories {
     mavenCentral()
 }
@@ -20,3 +26,5 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
     testImplementation("com.google.truth:truth:1.1.3")
 }
+
+apply(from = "${rootProject.projectDir}/scripts/publish-module.gradle")

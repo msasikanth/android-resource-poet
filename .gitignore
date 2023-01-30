@@ -5,3 +5,5 @@
 build
 
 .fleet
+
+local.properties
