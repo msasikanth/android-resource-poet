@@ -22,7 +22,7 @@ spotless {
 ext {
   set("PUBLISH_GROUP_ID", "dev.sasikanth")
   set("PUBLISH_ARTIFACT_ID", "android-resource-poet")
-  set("PUBLISH_VERSION", "1.0.0")
+  set("PUBLISH_VERSION", "1.1.0")
 }
 
 java {
