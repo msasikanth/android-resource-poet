@@ -1,7 +1,7 @@
 plugins {
   id("org.jetbrains.kotlin.jvm") version "1.8.10"
   id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
-  id("org.jetbrains.dokka") version "1.7.20"
+  id("org.jetbrains.dokka") version "1.8.10"
   `java-library`
   id("com.diffplug.spotless") version "6.15.0"
 }
