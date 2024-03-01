@@ -36,7 +36,7 @@ dependencies {
 
   testImplementation("org.jetbrains.kotlin:kotlin-test")
   testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
-  testImplementation("com.google.truth:truth:1.1.3")
+  testImplementation("com.google.truth:truth:1.4.2")
 }
 
 apply(plugin = "org.jetbrains.dokka")
